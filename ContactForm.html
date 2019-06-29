@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arik and Shlomi's web</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,80">
+    <link rel="stylesheet" href="css/ContactForm_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type = "text/javascript" src="js/ContactForm_validation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+</head>
+
+<body>
+    <div class="contrainer">
+                            <div class="col-sm-2">
+               
+            </div>
+        <div class="row" id="contact">
+            <div class="col-sm-4">
+                    
+                <div class="container1">
+                    <form  id="contact_US" onsubmit="return nameval()" action="/sendEmailContactUss" method="post" >
+
+                        <div class="header">
+                            <h1>Contact form</h1>
+                        </div>
+                        <div class="input-container">
+                            <i class="fa fa-user icon"></i>
+                            <input class="input-field" type="text" id="fname" placeholder="Full name" name="Name" required>
+                        </div>
+
+
+                        <div class="input-container">
+                            <i class="fa fa-envelope icon"></i>
+                            <input class="input-field" name="email" id="email" input class="input-container" placeholder="Email"
+                                type="text" placeholder="" required
+                                pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*">
+                        </div>
+
+                        <div>
+                            <select id="contact" name="contant" required>
+                                <option value="placeholder" disabled selected hidden>Contact us
+                                    concernening</option>
+                                <option value="Technical ">Technical</option>
+                                <option value="Account">Account</option>
+                                <option value="Payment">Payment</option>
+                                <option value="Other">Other </option>
+                            </select>
+
+                        </div>
+                        <br>
+
+                        <div> <textarea id="subject" name="subject" rows="5" placeholder="Write something..."
+                                style="height:32% ;width:99%; "></textarea>
+                        </div>
+
+                        
+                        <button type="Submit" class="btn right login_btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="container2">
+                    <form action="index.html">
+
+                        <div class="icon247">
+                            <img src="img/8.png" id="24/7" width="65%" height="0%">
+
+                        </div>
+                        <div style="text-align:center">
+                            <button type="button" button onclick="location.href='/log-in'" class="btn btn-primary" value="Contact Support">Contact us</button>
+                        </div>
+
+
+                        <div class="icons">
+
+                            <div> <img src="img/phone.png" width="35" height="35">
+                                <div class="textnexttoicons">
+                                    <h6>Call Sales Now: +1-512-872-3500</h6>
+                                </div>
+
+                            </div><br>
+                            <div> <img src="img/clock.jpg" width="35" height="35">
+                                <div class="textnexttoicons">
+                                    <h6>Sales Hours: 7am- 7pm CST</h6>
+                                </div>
+                            </div><br>
+                            <div> <img src="img/invelope.jpg" width="35" height="35">
+                                <div class="textnexttoicons">
+                                    <h6> FoldiMate Inc</h6>
+                                </div>
+                            </div>
+                            <div class="textnexttoicons">
+
+                                <h6>3411 Regatta Blvd
+                                    Richmond, CA 94804
+                                    United States</h6>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-2">
+               
+            </div>
+        </div>
+        
+    </div>
+</body>
+
+</html>

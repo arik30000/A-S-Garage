@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+	<title>Login Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,80">
+    <link rel="stylesheet" href="assets/css/Login+SignUp_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="validation.js"></script>
+
+</head>
+<body>
+  
+   <form action="ContactForm.html" method="post"  onsubmit="validateForm()"  >
+       <div class="container">
+           	<div class="login-header">
+			<h5>Log In</h5>
+		</div>
+
+                            <div class="input-container">
+                            <i class="fa fa-user icon"></i>
+                            <input class="input-field" type="text" placeholder="User name" name="usrnm" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" required>
+                                                        
+                        </div>
+
+                        <div class="input-container">
+                            <i class="fa fa-lock icon"></i>
+                          <input class="input-field" type="text" id="psw" placeholder="Password" name="psw" required>
+
+                        </div>
+                  <div>
+           	<div style="text-align:right">
+                
+                       <div>
+           
+           	<h6 class="sign-up" style="text-align:right">
+              		<a href="index.html">Forgot password?</a>
+			</h6>
+           
+           </div>
+                
+                
+						<input type="checkbox" checked="checked" name="remember">Remember me
+          </div>
+          <input type="submit" class="loginbutton" value="Submit">
+                
+                <!-- <button type="submit" class="loginbutton"  >Login</button> -->
+                
+              </form>
+                <div>
+                <label>Need an account?</label>
+                            
+			<h6 class="sign-up" >
+              		<a href="SignUp.html">Sign up</a>
+			</h6>
+                    </div>
+                
+             
+           
+       </div>
+                     
+    <!-- <script src="assets/js/jquery.min.js"></script> -->
+        <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
+       </div>
+                    </form>
+       </body>
+</html>
+
+
+

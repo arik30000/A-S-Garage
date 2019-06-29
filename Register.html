@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+	<title>Login Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,80">
+  <link rel="stylesheet" href="css/Login+SignUp_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script type = "text/javascript" src="js/validation.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ 
+  
+
+</head>
+
+<body>
+ 
+        <div class="container">
+                <form id="regDiv" method="post"  onsubmit="return validateSignup()"  >
+                    <div class="login-header">
+                      
+                        <h5>Register</h5></div>
+                                              <div class="input-container">
+                                                
+                                              <i class="fa fa-user icon"></i>
+                                              <input class="input-field" type="text" id="signupusrname" placeholder="User name" name="signupusrname" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" required>
+                                          </div>
+                  
+                                          <div class="input-container">
+                                              <i class="fa fa-lock icon"></i>
+                                            <input class="input-field" type="password" id="signuppsw" placeholder="Password" name="signuppsw" required>
+                                          </div>
+                   <div class="input-container">
+                                              <i class="fa fa-lock icon"></i>
+                                            <input class="input-field" type="password" id="signupcpsw" placeholder="Re-enter Password" name="signupcpsw" required>
+                                          </div>
+                                          <div style="text-align:left">
+                                            <input type="checkbox" onclick="showPassModal()">Show Password
+                                          </div>
+                  
+                       
+                     <input type="submit" class="btn left login_btn" value="Sign-in" id="regBtn">
+
+                                        </form></div>
+                                        </div>
+                                            
+                              
+          
+                  
+            <!-- <script src="assets/js/jquery.min.js"></script> -->
+            <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
+          </body>
+          </html>
+          

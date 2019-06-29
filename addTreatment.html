@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Car treatment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.1.1.js">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/editor.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/moment-2.18.1/dt-1.10.18/b-1.5.6/sl-1.3.0/datatables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+</head>
+<body>
+
+        <div class="container">
+                <div class="container1" class="col-sm-6">
+                        <form id="table"  method="post" onsubmit="return true" >
+        
+                            <div class="header">
+                                <h1>Garage-addTreatment</h1>
+                            </div>
+                            <div class="input-container">
+                                    <i class="fa fa-road icon" aria-hidden="true"></i>
+                                    <input class="input-field" type="text" id="number" placeholder="Enter number" name="number" required>
+                          
+        
+                                </div>
+                                <br>
+                                <div class="input-container">
+                                        <i class="fa fa-user icon"></i>
+                                        <input class="input-field" type="text" id="carname" placeholder="car modal" name="carname" required>
+                                    </div>
+                                    <br>
+                            <div class="input-container">
+                                <i class="fa fa-user icon"></i>
+                                <input class="input-field" type="text" id="name"  placeholder="Customer name" name="name" required>
+                            </div>
+                            <br>
+        
+                            <div class="input-container">
+                                <i class="fa fa-envelope icon"></i>
+                                <input class="input-field" name="id" id="id" input class="input-container" placeholder="id"
+                                    type="text" placeholder="" required
+                                    >
+                            </div>
+                            <br>
+                            <div class="input-container">
+                                    <i class="fa fa-road icon"></i>
+                                    <input class="input-field" name="status" id="status"  input class="input-container" placeholder="status"
+                                        type="text" placeholder="" required
+                                        >
+                                </div>
+                                <button type="Submit" class="btn right login_btn">Submit</button>
+                        </form>
+                    </div>
+        
+        
+            <div class="container2" class="col-sm-6" style="margin-top: -34.9%">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <table id="datatable" class="table table-bordered table-hover">
+                                <h3> Garage-Center</h3>
+                                
+                                    <thead>
+                                        <tr>
+                                            <th>Number</th>
+                                            <th>Carname</th>
+                                            <th>Name</th>
+                                            <th>Id</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each list}}
+                                        <tr>
+                                            <td>{{this.number}}</td>
+                                            <td>{{this.carname}}</td>
+                                            <td>{{this.name}}</td>
+                                            <td>{{this.id}}</td>
+                                            <td>{{this.status}}</td>
+                                            <td>
+                                               
+                                            </td>
+                                        </tr>
+                                       
+                                    </tbody>
+                              
+                </div>
+            </div>
+        
+        </div>
+        <script
+                    src="http://code.jquery.com/jquery-3.2.1.min.js"
+                    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                    crossorigin="anonymous"></script>
+                    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+                    <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $(".table").DataTable({
+                        "ordering": true,
+                        "searching": true,
+                        "paging": true,
+                        "columnDefs": [
+                            {
+                                "targets": 0,
+                                "searchable": true,
+                                "visible": true
+                            }
+                        ],
+                        "order": [[0, "asc"]]
+                    });
+                });
+            </script>
+        </body>
+        </html>   

@@ -1,0 +1,101 @@
+
+body {
+ background:url(WHDQ-511661662.jpg); 
+  background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+	background-size:100%;
+       }
+
+.container1 {
+    position: relative;
+	width:100%;
+    height: 80%;
+    top:2%;
+    left:55%;
+    border-radius: 4%;  /*shaped edges*/
+	background-color: #f2f2f2;
+	padding: 1%;
+	margin: 10.5%;
+    }
+
+ .container2{
+	position: relative;
+	left:50%;
+	top:-2%;
+    width:80%;
+    height: 80%; 
+    border-radius: 4%; /*shaped edges*/
+    background-color: #f2f2f2;
+    padding: 2%;
+	margin: 15.6%;
+	 }
+
+.submitbutton{
+ background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  opacity: 0.9;
+border-radius: 4%;
+}
+
+.submitbutton:hover {
+  opacity: 3;
+}
+/* style for the submit button */
+.btn {
+background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 3;
+}
+
+.icons{
+    position: relative;
+    top:6%;
+    left: 1%;
+    }
+
+.textnexttoicons{
+    display: inline-block;
+       
+}
+
+.icon247{
+    position: relative;
+    right: -18%;
+}
+    
+.input-container {
+ display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 2%;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 1% solid dodgerblue;
+}
+
+

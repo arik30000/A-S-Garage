@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+	<title>Login Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,80">
+  <link rel="stylesheet" href="css/Login+SignUp_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script type = "text/javascript" src="js/validation.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  
+  
+ 
+</head>
+
+<body>
+  <div class="container">
+    <form id="Login" method="post"  onsubmit="return validateForm()"  > 
+      <div class="login-header">
+        <h5>Log In Form </h5>
+        <input type="button" value="ContactUs!" button onclick="location.href='/contact-us'" class="btn float-center login_btn" ></button>
+		  </div>
+      <br>
+      <div class="input-container">
+        <i class="fa fa-user icon"></i>
+        <input class="input-field" type="text" id="usrname" placeholder="User name" name="usrname" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" required>
+      </div>
+
+      <div class="input-container">
+        <i class="fa fa-lock icon"></i>
+        <input class="input-field" type="password" id="psw" placeholder="Password" name="psw" required>
+      </div>
+                  
+      <div style="text-align:left">
+        <input type="checkbox" onclick="myFunction()">Show Password
+      <div style="float:right">
+        <a href="rec-pass">Forgot password?</a>
+      </div> 
+      </div>
+      <br>
+      
+      <input type="submit" class="btn left login_btn" value="Login" id="loginBtn">
+    
+      <input type="button" value="Register" button onclick="location.href='/register'" class="btn float-right login_btn" ></button>    
+    </form>
+      <!-- <button type="submit" class="loginbutton"  >Login</button> -->            
+    
+  
+    <div>
+     
+      
+      
+      </h6>
+    </div>
+  </div>
+                                  
+                    
+
+        
+  <!-- <script src="assets/js/jquery.min.js"></script> -->
+  <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
+</body>
+</html>
+
+
+
