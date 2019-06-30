@@ -185,20 +185,16 @@ app.post('/deletetreatment', function(req,res){
       res.sendFile(path.join(__dirname + "/Login.html"));
 
   });
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname + "/Login.html"));
-
-});
+    app.get("/",function(req, res) {
+      res.sendFile(path.join(__dirname + "/Login.html"));
+    });
         
         app.get("/register", function(req, res) {
           res.sendFile(path.join(__dirname + "/Register.html"));
 
       });
 
-        app.post("/log-in",urlencodeParser,function(req, res){
-          console.log(req.body);
-          res.sendFile(path.join(__dirname + "/Login.html"));
-        });
+        
         
       
         app.get("/contact-us", function(req, res) {
@@ -272,7 +268,7 @@ app.post('/deletetreatment', function(req,res){
                 console.log(error);
               }else{
                 console.log("Email send: " + info.response);
-                res.sendFile(path.join(__dirname + "/Login.html"));
+                res.redirect("log-in");
                 
                 }
               });
