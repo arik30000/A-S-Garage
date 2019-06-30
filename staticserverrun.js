@@ -36,7 +36,7 @@ db.once('open', function(callback){
 app.post('/log-in',function(req,res){
   if(req.body.usrname=="admin@gmail.com" && req.body.psw=="Admin1!")
         {
-          res.redirect('/index');
+          res.sendFile(path.join(__dirname + "/index.html")); 
         }
         else
         {
@@ -45,7 +45,7 @@ app.post('/log-in',function(req,res){
             if(user ===null){
               res.end("Login invalid");
            }else if (user.name === req.body.usrname && user.password === req.body.psw){
-            res.redirect('/index');
+            res.sendFile(path.join(__dirname + "/index.html")); 
          } else {
            console.log("Credentials wrong");
            res.end("Login invalid");
@@ -280,5 +280,6 @@ app.post('/deletetreatment', function(req,res){
 });
           
           //////////////////////////******************finish retrieve password************** */
-           app.listen(port);
-console.log('Server started! At http://localhost:' + port);
+          app.listen(process.env.PORT || 8000, function(){
+            console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+          });
