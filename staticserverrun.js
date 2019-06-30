@@ -185,6 +185,10 @@ app.post('/deletetreatment', function(req,res){
       res.sendFile(path.join(__dirname + "/Login.html"));
 
   });
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname + "/Login.html"));
+
+});
         
         app.get("/register", function(req, res) {
           res.sendFile(path.join(__dirname + "/Register.html"));
