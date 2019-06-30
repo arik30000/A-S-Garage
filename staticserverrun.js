@@ -1,4 +1,4 @@
-//////////////////var http = require('http');
+
 const express = require('express');
 const app = express();
 var router = express.Router();
@@ -9,7 +9,6 @@ const urlencodeParser = bodyParser.urlencoded({extended: true});
 const http = require('http'); 
 __dirname+="/";
 const port = 27017;
-const exphbs = require('express-handlebars');
 var nodemailer=require('nodemailer');
 ////for table//////
 app.use(bodyParser.urlencoded({ 

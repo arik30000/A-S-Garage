@@ -42,6 +42,11 @@
                 <table id="datatable" class="table table-bordered table-hover">
                         <h3><a class="btn btn-secondary" href="/employee"><i class="fa fa-plus"></i> Create New</a> Garage-Center</h3>
                         
+                                
+                             
+                                    
+                           
+                        
                             <thead>
                                 <tr>
                                     <th>Number</th>
@@ -55,11 +60,11 @@
                             <tbody>
                                 {{#each list}}
                                 <tr>
-                                    <td>{{this.number}}</td>
-                                    <td>{{this.carname}}</td>
-                                    <td>{{this.name}}</td>
-                                    <td>{{this.id}}</td>
-                                    <td>{{this.status}}</td>
+                                    <td id="_number" >{{this.number}}</td>
+                                    <td id="_carname">{{this.carname}}</td>
+                                    <td id="_name">{{this.name}}</td>
+                                    <td id="_id">{{this.id}}</td>
+                                    <td id="_status">{{this.status}}</td>
                                     <td>
                                         <a href="/employee/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
                                         <a href="/employee/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
@@ -80,11 +85,10 @@
             <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $(".datatable").DataTable({
+            $(".table").DataTable({
                 "ordering": true,
                 "searching": true,
                 "paging": true,
-                "serverside":true,
                 "columnDefs": [
                     {
                         "targets": 0,
@@ -95,7 +99,6 @@
                 "order": [[0, "asc"]]
             });
         });
-        
     </script>
 </body>
 </html>
