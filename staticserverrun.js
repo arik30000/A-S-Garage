@@ -15,14 +15,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 })); 
 app.use(bodyParser.json());
-//// ignore fAVICON
-function ignoreFavicon(req, res, next) {
-  if (req.originalUrl === '/favicon.ico') {
-    res.status(204).json({nope: true});
-  } else {
-    next();
-  }
-}
+
 ////////FINISH IGNORE FAVICON///////////
 //var MongoClient = require('mongodb').MongoClient;
 //var url = 'mongodb+srv://arik30000@gmail.com:arik12345%21@cluster0-ineie.mongodb.net/test?retryWrites=true&w=majority';
@@ -213,6 +206,9 @@ app.post('/deletetreatment', function(req,res){
     });
     app.get("/rec-pass", function(req, res) {
       res.sendFile(path.join(__dirname + "/Rec-Pass.html"));  
+  });
+  app.get('/favicon.ico',function(req,res){
+    res.end();
   });
      //////////////// finish get and post requests for web pages//////////////////////////   
 //******************************send mail************************************ */
