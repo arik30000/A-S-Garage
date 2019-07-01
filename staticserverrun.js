@@ -216,9 +216,7 @@ app.post('/deletetreatment', function(req,res){
           res.sendFile(path.join(__dirname + "/ContactForm.html"));
           
       });
-      app.get("/index", function(req, res) {
-        res.sendFile(path.join(__dirname + "/Index.html")); 
-    });
+     
     app.get("/rec-pass", function(req, res) {
       res.sendFile(path.join(__dirname + "/Rec-Pass.html"));  
   });
