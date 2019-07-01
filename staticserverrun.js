@@ -199,6 +199,9 @@ app.post('/deletetreatment', function(req,res){
     app.get("/",function(req, res) {
       res.sendFile(path.join(__dirname + "/Login.html"));
     });
+    app.post("/",function(req, res) {
+      res.sendFile(path.join(__dirname + "/addTreatment.html"));
+    });
     
         
         app.get("/register", function(req, res) {
