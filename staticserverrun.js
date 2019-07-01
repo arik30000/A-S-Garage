@@ -36,7 +36,7 @@ db.once('open', function(callback){
 app.post('/log-in',function(req,res){
   if(req.body.usrname=="admin@gmail.com" && req.body.psw=="Admin1!")
         {
-          res.redirect("index"); 
+          res.redirect("addtreatment"); 
         }
         else
         {
@@ -45,7 +45,7 @@ app.post('/log-in',function(req,res){
             if(user ===null){
               res.end("Login invalid");
            }else if (user.name === req.body.usrname && user.password === req.body.psw){
-            res.redirect("index");  
+            res.redirect("addtreatment");  
          } else {
            console.log("Credentials wrong");
            res.end("Login invalid");
@@ -107,7 +107,7 @@ db.collection('devices').insertOne(data,function(err, collection){
       db.collection('tabledb').insertOne(data,function(err, collection){ 
         if (err) throw err; 
         console.log("Record deleted Successfully");
-        res.redirect("index"); 
+        res.redirect("addtreatment"); 
       });
     }else if (user.number === req.body.number && user.Carname === req.body.carname && user.Customer === req.body.name && user.Id === req.body.id&& user.Status ===req.body.status)
       {
@@ -143,7 +143,7 @@ app.post('/deletetreatment', function(req,res){
         db.collection('tabledb').remove(data,function(err, collection){ 
           if (err) throw err; 
           console.log("Record deleted Successfully");
-          res.redirect("index"); 
+          res.redirect("addtreatment"); 
         })};
            
       }); 
