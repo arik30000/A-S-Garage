@@ -36,7 +36,7 @@ db.once('open', function(callback){
 app.post('/log-in',function(req,res){
   if(req.body.usrname=="admin@gmail.com" && req.body.psw=="Admin1!")
         {
-          res.redirect("/index"); 
+          res.redirect("index"); 
         }
         else
         {
@@ -45,7 +45,7 @@ app.post('/log-in',function(req,res){
             if(user ===null){
               res.end("Login invalid");
            }else if (user.name === req.body.usrname && user.password === req.body.psw){
-            res.redirect("/index");  
+            res.redirect("index");  
          } else {
            console.log("Credentials wrong");
            res.end("Login invalid");
@@ -202,7 +202,7 @@ app.post('/deletetreatment', function(req,res){
           
       });
       app.get("/index", function(req, res) {
-        res.sendFile(path.join(__dirname + "/index.html")); 
+        res.sendFile(path.join(__dirname + "/Index.html")); 
     });
     app.get("/rec-pass", function(req, res) {
       res.sendFile(path.join(__dirname + "/Rec-Pass.html"));  
