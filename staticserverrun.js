@@ -79,7 +79,7 @@ app.post('/register', function(req,res){
 db.collection('devices').insertOne(data,function(err, collection){ 
       if (err) throw err; 
       console.log("Record inserted Successfully");
-      res.sendFile(path.join(__dirname + "/Login.html")); 
+      res.redirect("log-in"); 
             
   }); 
         
@@ -107,7 +107,7 @@ db.collection('devices').insertOne(data,function(err, collection){
       db.collection('tabledb').insertOne(data,function(err, collection){ 
         if (err) throw err; 
         console.log("Record deleted Successfully");
-        res.sendFile(path.join(__dirname + "/index.html"));
+        res.redirect("index"); 
       });
     }else if (user.number === req.body.number && user.Carname === req.body.carname && user.Customer === req.body.name && user.Id === req.body.id&& user.Status ===req.body.status)
       {
@@ -143,7 +143,7 @@ app.post('/deletetreatment', function(req,res){
         db.collection('tabledb').remove(data,function(err, collection){ 
           if (err) throw err; 
           console.log("Record deleted Successfully");
-          res.sendFile(path.join(__dirname + "/index.html"));
+          res.redirect("index"); 
         })};
            
       }); 
@@ -155,7 +155,18 @@ app.post('/deletetreatment', function(req,res){
    
 
 
-
+      app.get('/Tr', (req, res) => {
+        db.collection('tabledb').find((err,data ) => {
+            if (!err) {
+                res.render("/index", {
+                    index: data
+                });
+            }
+            else {
+                console.log('Error in retrieving employee list :' + err);
+            }
+        });
+    });
 
 //////////////*************datatables done***************** */
 

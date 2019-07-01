@@ -18,7 +18,7 @@
 
     <div class="container">
         <div class="container1" class="col-sm-6">
-                <form id="table"   >
+                <form id="T_id" method='post'  >
 
                     <div class="header">
                         <h1>Garage-add treatment</h1>
@@ -36,69 +36,80 @@
             </div>
 
             <br><br><br><br><br><br>
-    <div class="container2" class="col-sm-6" style="margin-top: -34.9%">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-2">
-                <table id="datatable" class="table table-bordered table-hover">
-                        <h3><a class="btn btn-secondary" href="/employee"><i class="fa fa-plus"></i> Create New</a> Garage-Center</h3>
-                        
+            <div class="container2" class="col-sm-6" style="margin-top: -34.9%">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <table id="datatables" class="table table-bordered table-hover">
+                                <h3> Garage-Center</h3>
                                 
-                             
-                                    
-                           
-                        
-                            <thead>
-                                <tr>
-                                    <th>Number</th>
-                                    <th>Carname</th>
-                                    <th>Name</th>
-                                    <th>Id</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each list}}
-                                <tr>
-                                    <td id="_number" >{{this.number}}</td>
-                                    <td id="_carname">{{this.carname}}</td>
-                                    <td id="_name">{{this.name}}</td>
-                                    <td id="_id">{{this.id}}</td>
-                                    <td id="_status">{{this.status}}</td>
-                                    <td>
-                                        <a href="/employee/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-                                        <a href="/employee/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
-                                {{/each}}
-                            </tbody>
-                      
+                                    <thead>
+                                        <tr>
+                                            <th>Number</th>
+                                            <th>Carname</th>
+                                            <th>Name</th>
+                                            <th>Id</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each list}}
+                                        <tr>
+                                            <td> </td>
+                                            <td> </td>
+                                            <td> </td>
+                                            <td> </td>
+                                            <td></td>
+                                            <td>
+                                   
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                              
+                </div>
+            </div>
+        
         </div>
-    </div>
-
-</div>
-<script
-            src="http://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-            <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-            <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".table").DataTable({
-                "ordering": true,
-                "searching": true,
-                "paging": true,
-                "columnDefs": [
-                    {
-                        "targets": 0,
-                        "searchable": true,
-                        "visible": true
-                    }
-                ],
-                "order": [[0, "asc"]]
+        <script
+                    src="http://code.jquery.com/jquery-3.2.1.min.js"
+                    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                    crossorigin="anonymous"></script>
+                    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+                    <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $(".table").DataTable({
+                        "bSort": true,
+                        "serverside":true,
+                        "ordering": true,
+                        "searching": true,
+                        "paging": true,
+                        "columnDefs": [
+                            {
+                                "targets": 0,
+                                "searchable": true,
+                                "visible": true
+                            }
+                        ],
+                        "order": [[0, "asc"]]
+                        
+                    });
+                }
+                );
+                
+                        
+               
+            </script>
+            <script type="text/javascript">
+            $.ajax({
+                url:'Tr',
+                method:'get',
+                success:function(data){
+                    datatables.clear().draw();
+                    datatables.rows.add(data).draw();
+                }
             });
-        });
-    </script>
-</body>
-</html>
+        </script>
+        </body>
+        </html>   
