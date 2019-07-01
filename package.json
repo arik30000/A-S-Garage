@@ -4,6 +4,7 @@
   "description": "",
   "main": "staticserverrun.js",
   "dependencies": {
+    "alert-node": "^1.2.5",
     "angular": "^1.7.8",
     "body-parser": "^1.19.0",
     "ejs": "^2.6.1",

@@ -68,7 +68,12 @@ app.post('/register', function(req,res){
   db.collection('devices').findOne({ name:req.body.signupusrname}, function(err, user) 
   {
     if(user ===null){
-      res.end("Login invalid");
+      db.collection('devices').insertOne(data,function(err, collection){ 
+        if (err) throw err; 
+        console.log("Record inserted Successfully");
+        res.redirect("log-in"); 
+              
+    }); 
     }else if (user.name === User && user.password === pass)
       {
         console.log("User already exists");
@@ -76,12 +81,7 @@ app.post('/register', function(req,res){
       }
     });
       ///////// if username dont exists adds a new username(account)///////////////////////////////
-db.collection('devices').insertOne(data,function(err, collection){ 
-      if (err) throw err; 
-      console.log("Record inserted Successfully");
-      res.redirect("log-in"); 
-            
-  }); 
+
         
   
 }); 
