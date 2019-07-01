@@ -208,7 +208,7 @@ app.post('/deletetreatment', function(req,res){
 
       app.post("/log-in",urlencodeParser,function(req, res){
         console.log(req.body);
-        res.sendFile(path.join(__dirname + "/Index.html"));
+        res.sendFile(path.join(__dirname + "/Login.html"));
       }); 
         
       
