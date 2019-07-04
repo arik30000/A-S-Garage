@@ -15,11 +15,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 })); 
 app.use(bodyParser.json());
-
-////////FINISH IGNORE FAVICON///////////
-//var MongoClient = require('mongodb').MongoClient;
-//var url = 'mongodb+srv://arik30000@gmail.com:arik12345%21@cluster0-ineie.mongodb.net/test?retryWrites=true&w=majority';
-////////////connection to mongodb through mongoose///////////////////////////// 
+//////////// connection to mongodb through mongoose/////////////////////////////
 mongoose.connect("mongodb+srv://arik:arik12345@cluster0-ineie.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
 var db=mongoose.connection; 
 db.on('error', console.log.bind(console, "connection error")); 
@@ -27,11 +23,7 @@ db.once('open', function(callback){
     console.log("connection succeeded"); 
 }) 
 //////////// finish connection to mongodb through mongoose/////////////////////////////
-////////////////**************************//////////// */
- // support json encoded bodies
-
-/////**********************////////////////////////////// */
-///////////////////connect to mongodb///////////////////
+///////////////////connect to mongodb(log-in)///////////////////
 /////////////connect with special account admin(not in mondodb)////////////
 app.post('/log-in',function(req,res){
   if(req.body.usrname=="admin@gmail.com" && req.body.psw=="Admin1!")
@@ -52,7 +44,7 @@ app.post('/log-in',function(req,res){
          }
   });
 }});
-/////////////////////finish connect to mongodb////////////////////////////
+/////////////////////finish connect to mongodb(log-in)////////////////////////////
 //register to DB================================================================
 app.post('/register', function(req,res){ 
   var User = req.body.signupusrname; 
@@ -64,15 +56,13 @@ app.post('/register', function(req,res){
       "passwordconfirm":passconfirm 
   } 
   /////////check if username already exists///////////////////////////////
- 
   db.collection('devices').findOne({ name:req.body.signupusrname}, function(err, user) 
   {
     if(user ===null){
       db.collection('devices').insertOne(data,function(err, collection){ 
         if (err) throw err; 
         console.log("Record inserted Successfully");
-        res.redirect("log-in"); 
-              
+        res.redirect("log-in");          
     }); 
     }else if (user.name === User && user.password === pass)
       {
@@ -81,12 +71,9 @@ app.post('/register', function(req,res){
       }
     });
       ///////// if username dont exists adds a new username(account)///////////////////////////////
-
-        
-  
 }); 
-
  /////////////////finish register to DB================================================================
+ //////////////*************datatables start***************** */
  //////////////////add table row to tabledb in mongodb/////////////////////////////////////////
  app.post('/addtreatment', function(req,res){ 
   var numbercar = req.body.number; 
@@ -106,7 +93,7 @@ app.post('/register', function(req,res){
     if(user ===null){
       db.collection('tabledb').insertOne(data,function(err, collection){ 
         if (err) throw err; 
-        console.log("Record deleted Successfully");
+        console.log("Record Added Successfully");
         res.redirect("addtreatment"); 
       });
     }else if (user.number === req.body.number && user.Carname === req.body.carname && user.Customer === req.body.name && user.Id === req.body.id&& user.Status ===req.body.status)
@@ -117,38 +104,38 @@ app.post('/register', function(req,res){
     });
     });
   ////////////////// finish add table row to tabledb in mongodb/////////////////////////////////////////
-
   ////////////////// edit table row to tabledb in mongodb/////////////////////////////////////////
-  app.put('/work/', function(req,res){ 
+  app.post('/edittreatment', function(req,res){   
+    var Tr=req.body.TrId;
     var numbercar = req.body.number; 
     var carname =req.body.carname; 
     var customer = req.body.name;
     var id = req.body.id;
     var status = req.body.status; 
-    var data = { 
-       "number" : numbercar, 
+    var data = {
+       "number":numbercar,
        "Carname" :carname, 
        "Customer" : customer,
        "Id" : id,
        "Status" : status 
     }
-    db.collection('tabledb').findOne({ number:req.body.number}, function(err, user) 
+    db.collection('tabledb').findOneAndDelete({ number:req.body.number}, function(err, user) 
     {
       if(user ===null){
-        db.collection('tabledb').insertOne(data,function(err, collection){ 
-          if (err) throw err; 
-          console.log("Record deleted Successfully");
-          res.redirect("addtreatment"); 
-        });
-      }else if (user.number === req.body.number && user.Carname === req.body.carname && user.Customer === req.body.name && user.Id === req.body.id&& user.Status ===req.body.status)
-        {
-          res.end("already exists");
-             
-        } 
-      });
-      });
-
-////////////////////*****delete table******////////////////// */
+        res.end("Treatment do not exist"); 
+        res.redirect("edittreatment");    
+      }else 
+      {
+          db.collection('tabledb').insertOne(data,function(err, collection){ 
+            if (err) throw err; 
+            console.log("Record Updated Successfully");
+            res.redirect("edittreatment"); 
+            });      
+      };
+      });  
+    });   
+//////////////////////finish edit table row/////////////////////////////////////////////      
+////////////////////*****delete table row******////////////////// */
 app.post('/deletetreatment', function(req,res){ 
   var numbercar = req.body.number; 
   var carname =req.body.carname; 
@@ -171,18 +158,12 @@ app.post('/deletetreatment', function(req,res){
         db.collection('tabledb').remove(data,function(err, collection){ 
           if (err) throw err; 
           console.log("Record deleted Successfully");
-          res.redirect("addtreatment"); 
-        })};
-           
+          res.redirect("deletetreatment"); 
+        })};  
       }); 
       });
-    
-        
-  
-      
-   
-
-
+ ///////////////////////finish delete table row/////////////////////
+/////////insert data into table////////////////////////////
       app.get('/work', (req, res) => {
         db.collection('tabledb').find({}).toArray( (err,data ) => {
             if (!err) {
@@ -192,10 +173,8 @@ app.post('/deletetreatment', function(req,res){
             }
         } );
     });
-
+/////////insert data into table////////////////////////////
 //////////////*************datatables done***************** */
-
-
 /////////////////load all files////////////////////////////////////////
        // app.use(express.static('public'));
        app.use('/bootstrap', express.static(path.join(__dirname, 'bootstrap')));
@@ -207,41 +186,28 @@ app.post('/deletetreatment', function(req,res){
         ////////////////get and post requests for web pages//////////////////////////
         app.get("/edittreatment", function(req, res) {
             res.sendFile(path.join(__dirname + "/editTreatment.html"));
-
         });
         app.get("/addtreatment", function(req, res) {
           res.sendFile(path.join(__dirname + "/addTreatment.html"));
-
       });
       app.get("/deletetreatment", function(req, res) {
         res.sendFile(path.join(__dirname + "/deleteTreatment.html"));
-
     });
     app.get("/log-in", function(req, res) {
       res.sendFile(path.join(__dirname + "/Login.html"));
-
   });
     app.get("/",function(req, res) {
       res.sendFile(path.join(__dirname + "/Login.html"));
     });
     app.post("/",function(req, res) {
       res.sendFile(path.join(__dirname + "/addTreatment.html"));
-    });
-    
-        
+    });   
         app.get("/register", function(req, res) {
           res.sendFile(path.join(__dirname + "/Register.html"));
-
       });
-
-     
-        
-      
         app.get("/contact-us", function(req, res) {
-          res.sendFile(path.join(__dirname + "/ContactForm.html"));
-          
+          res.sendFile(path.join(__dirname + "/ContactForm.html"));      
       });
-     
     app.get("/rec-pass", function(req, res) {
       res.sendFile(path.join(__dirname + "/Rec-Pass.html"));  
   });
@@ -251,8 +217,7 @@ app.post('/deletetreatment', function(req,res){
      //////////////// finish get and post requests for web pages//////////////////////////   
 //******************************send mail************************************ */
         app.post('/sendEmailContactUss', urlencodeParser,function(req,res){
-          console.log(req.body );
-          
+          console.log(req.body ); 
           var transporter = nodemailer.createTransport({
             service: "Gmail",
             auth: {
@@ -271,26 +236,21 @@ app.post('/deletetreatment', function(req,res){
               console.log(error);
             }else{
               console.log("Email send: " + info.response);
-              res.redirect("log-in");
-              
+              res.redirect("log-in");  
               }
-            });
-        
+            });  
         });
         ////////*************************send mail done********************************* */
-        ////////////*****************retrieve password ********************************* */
-        
+        ////////////*****************retrieve password ********************************* */       
         app.post('/rec-pass', urlencodeParser,function(req,res){
-          console.log(req.body );
-          
+          console.log(req.body );   
           var transporter = nodemailer.createTransport({
             service: "Gmail",
             auth: {
               user: "testlocakhost@gmail.com",
               pass : "S12345678*"
             }
-          });
-        
+          });  
           db.collection('devices').findOne({ name: req.body.username}, function(err, user) {
             if(user ===null){
               res.end("Please type your email before tyring to get your password");
@@ -306,8 +266,7 @@ app.post('/deletetreatment', function(req,res){
                 console.log(error);
               }else{
                 console.log("Email send: " + info.response);
-                res.redirect("log-in");
-                
+                res.redirect("log-in");             
                 }
               });
          } else {
@@ -315,8 +274,7 @@ app.post('/deletetreatment', function(req,res){
            res.end("Login invalid");
          }
   });
-});
-          
+});      
           //////////////////////////******************finish retrieve password************** */
           app.listen(process.env.PORT || 8000, function(){
             console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);

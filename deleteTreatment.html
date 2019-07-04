@@ -18,46 +18,61 @@
 <body>
 
         <div class="container">
+                <nav class="navbar navbar-togglseable-md navbar-light bg-faded fixed-top " style="background-color: rgb(253, 252, 251)" id="page_nav">
+                        <a href="/addtreatment" class="navbar-brand  mx-auto" >
+                            <div class="vipTarderFxLogo"  ><span>Add-Treatment</span>
+                            </a>
+                                <a href="/edittreatment" class="navbar-brand  mx-auto" >
+                                    <div class="vipTarderFxLogo"  ><span>Edit-Treatment</span>
+                            </div>
+                        </div>
+                        </a>
+                    </a>
+                    <a href="/" class="navbar-brand  mx-auto" >
+                        <div class="vipTarderFxLogo"  ><span>Logout</span> 
+                        </div>
+                    </a>   
+                    </nav>
+                    <br><br><br>
                 <div class="container1" class="col-sm-6">
+                        
                         <form id="table"  method="post" onsubmit="return true" >
-        
+                                
                             <div class="header">
                                 <h1>Garage-DeleteTreatment</h1>
                             </div>
                             <div class="input-container">
                                     <i class="fa fa-road icon" aria-hidden="true"></i>
-                                    <input class="input-field" type="text" id="number" placeholder="Enter number" name="number" required>
+                                    <input class="input-field" type="text" id="number" placeholder="Enter Number Of Row You Want To Delete(numbers)" name="number"pattern = "[0-9]{1,10}" required>
                           
         
                                 </div>
                                 <br>
                                 <div class="input-container">
                                         <i class="fa fa-user icon"></i>
-                                        <input class="input-field" type="text" id="carname" placeholder="car modal" name="carname" required>
+                                        <input class="input-field" type="text" id="carname" placeholder="Enter Carname Of Row You Want To Delete(letters)" name="carname" pattern="[A-Za-z]{1,10}" required>
                                     </div>
                                     <br>
                             <div class="input-container">
                                 <i class="fa fa-user icon"></i>
-                                <input class="input-field" type="text" id="name"  placeholder="Customer name" name="name" required>
+                                <input class="input-field" type="text" id="name"  placeholder="Enter Name Of Row You Want To Delete(letters)" name="name" pattern="[A-Za-z]{1,30}" required>
                             </div>
                             <br>
         
                             <div class="input-container">
                                 <i class="fa fa-envelope icon"></i>
-                                <input class="input-field" name="id" id="id" input class="input-container" placeholder="id"
-                                    type="text" placeholder="" required
+                                <input class="input-field" name="id" id="id" input class="input-container" placeholder="Enter Id Of Row You Want To Delete(numbers)"
+                                    type="text" placeholder="" pattern = "[0-9]{1,10}" required
                                     >
                             </div>
                             <br>
                             <div class="input-container">
                                     <i class="fa fa-road icon"></i>
-                                    <input class="input-field" name="status" id="status"  input class="input-container" placeholder="status"
-                                        type="text" placeholder="" required
+                                    <input class="input-field" name="status" id="status"  input class="input-container" placeholder="Enter Status Of Row You Want To Delete(letters)"
+                                        type="text" placeholder=""  pattern="[A-Za-z]{1,30}"required
                                         >
                                 </div>
-                                <button type="button" onclick="location.href='/addtreatment'" class="btn btn-link">Transfer-Add</button>
-                                <button type="button" onclick="location.href='/edittreatment'" class="btn btn-link">Transfer-Edit</button>
-                                <br><br><br>
+                                <br>
                                 <button type="Submit" class="btn right login_btn">Submit</button>
                         </form>
                     </div>
@@ -65,8 +80,8 @@
         
             <div class="container2" class="col-sm-6" style="margin-top: -34.9%">
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                                                        <h3> Garage-Center</h3>
+                    <div class="col-md-8 col-md-offset-1">
+                                                        <h3> Garage-Treatments</h3>
 
                         <table id="datatable" class="table table-bordered table-hover">
                                 
@@ -77,7 +92,7 @@
                                             <th>Name</th>
                                             <th>Id</th>
                                             <th>Status</th>
-                                            <th></th>
+                                            
                                         </tr>
                                     </thead>
                               
@@ -112,11 +127,7 @@
                               {data: "Customer"},
                               {data: "Id"},
                               {data: "Status" },
-                              {
-                                data: null,
-                                className: "center",
-                                defaultContent: '<a href="/Log" class="editor_edit">Edit</a>'
-                            }
+                              
                               
                                 
                         ],         
