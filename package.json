@@ -11,6 +11,8 @@
     "express": "^4.17.0",
     "express-handlebars": "^3.1.0",
     "favicon": "0.0.2",
+    "innerhtml": "^1.0.2",
+    "innertext": "^1.0.3",
     "mongo-datatable": "^1.1.1",
     "mongod": "^2.0.0",
     "mongoose": "^5.6.2",

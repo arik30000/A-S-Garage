@@ -3,6 +3,7 @@
 <head>
     
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#" />
     <title>Car treatment</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      <link rel="stylesheet" href="https://code.jquery.com/jquery-3.1.1.js">
@@ -65,8 +66,9 @@
             <div class="container2" class="col-sm-6" style="margin-top: -34.9%">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
+                                                        <h3> Garage-Center</h3>
+
                         <table id="datatable" class="table table-bordered table-hover">
-                                <h3> Garage-Center</h3>
                                 
                                     <thead>
                                         <tr>
@@ -75,23 +77,8 @@
                                             <th>Name</th>
                                             <th>Id</th>
                                             <th>Status</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        {{#each list}}
-                                        <tr>
-                                            <td>{{this.number}}</td>
-                                            <td>{{this.carname}}</td>
-                                            <td>{{this.name}}</td>
-                                            <td>{{this.id}}</td>
-                                            <td>{{this.status}}</td>
-                                            <td>
-                                               
-                                            </td>
-                                        </tr>
-                                       
-                                    </tbody>
                               
                 </div>
             </div>
@@ -105,7 +92,7 @@
                     <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $(".table").DataTable({
+                    var table = $("#datatable").DataTable({
                         "ordering": true,
                         "searching": true,
                         "paging": true,
@@ -113,12 +100,31 @@
                             {
                                 "targets": 0,
                                 "searchable": true,
-                                "visible": true
+                                "visible": true,
+                                "order": [[0, "asc"]]
                             }
-                        ],
-                        "order": [[0, "asc"]]
+                         ] ,
+                         
+                         columns: [
+                              { data: "number"},
+                              {data: "Carname"},
+                              {data: "Customer"},
+                              {data: "Id"},
+                              {data: "Status" }
+                              
+                                
+                        ],         
                     });
-                });
+            $.ajax({
+            url: '/work',
+            method: 'get',
+            dataType: 'json',
+            success:function(data) {
+                  table.clear().draw();
+                  table.rows.add(data).draw();
+              }
+            });
+            });
             </script>
         </body>
         </html>   

@@ -3,6 +3,7 @@
 <head>
     
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#" />
     <title>Car treatment</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      <link rel="stylesheet" href="https://code.jquery.com/jquery-3.1.1.js">
@@ -18,10 +19,10 @@
 
         <div class="container">
                 <div class="container1" class="col-sm-6">
-                        <form id="delete"  method="post" onsubmit="return true" >
+                        <form id="table"  method="post" onsubmit="return true" >
         
                             <div class="header">
-                                <h1>Garage-deleteTreatment</h1>
+                                <h1>Garage-DeleteTreatment</h1>
                             </div>
                             <div class="input-container">
                                     <i class="fa fa-road icon" aria-hidden="true"></i>
@@ -29,45 +30,45 @@
                           
         
                                 </div>
-                                
+                                <br>
                                 <div class="input-container">
                                         <i class="fa fa-user icon"></i>
                                         <input class="input-field" type="text" id="carname" placeholder="car modal" name="carname" required>
                                     </div>
-                                    
+                                    <br>
                             <div class="input-container">
                                 <i class="fa fa-user icon"></i>
                                 <input class="input-field" type="text" id="name"  placeholder="Customer name" name="name" required>
                             </div>
-                            
+                            <br>
         
                             <div class="input-container">
                                 <i class="fa fa-envelope icon"></i>
-                                <input class="input-field" name="id" id="id"  input class="input-container" placeholder="id"
+                                <input class="input-field" name="id" id="id" input class="input-container" placeholder="id"
                                     type="text" placeholder="" required
                                     >
                             </div>
-
+                            <br>
                             <div class="input-container">
                                     <i class="fa fa-road icon"></i>
                                     <input class="input-field" name="status" id="status"  input class="input-container" placeholder="status"
                                         type="text" placeholder="" required
                                         >
                                 </div>
-                                <button type="button" button onclick="location.href='/addtreatment'" class="btn btn-link">Transfer-Add</button>
-
-                <button type="button" onclick="location.href='/edittreatment'" class="btn btn-link">Transfer-Edit</button>
-                <br><br><br>
-                                <button type="Submit" class="btn right login_btn">Submit</button>     
+                                <button type="button" onclick="location.href='/addtreatment'" class="btn btn-link">Transfer-Add</button>
+                                <button type="button" onclick="location.href='/edittreatment'" class="btn btn-link">Transfer-Edit</button>
+                                <br><br><br>
+                                <button type="Submit" class="btn right login_btn">Submit</button>
                         </form>
                     </div>
-                
+        
         
             <div class="container2" class="col-sm-6" style="margin-top: -34.9%">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
+                                                        <h3> Garage-Center</h3>
+
                         <table id="datatable" class="table table-bordered table-hover">
-                                <h3>  Garage-Center</h3>
                                 
                                     <thead>
                                         <tr>
@@ -79,17 +80,6 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    
-                                        <tr>
-                                            <td>{{this.number}}</td>
-                                            <td>{{this.carname}}</td>
-                                            <td>{{this.name}}</td>
-                                            <td>{{this.id}}</td>
-                                            <td>{{this.status}}</td>
-                                            
-                                        </tr>
-                                       
-                                    </tbody>
                               
                 </div>
             </div>
@@ -103,7 +93,7 @@
                     <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $(".table").DataTable({
+                    var table = $("#datatable").DataTable({
                         "ordering": true,
                         "searching": true,
                         "paging": true,
@@ -111,12 +101,64 @@
                             {
                                 "targets": 0,
                                 "searchable": true,
-                                "visible": true
+                                "visible": true,
+                                "order": [[0, "asc"]]
                             }
-                        ],
-                        "order": [[0, "asc"]]
+                         ] ,
+                         
+                         columns: [
+                              { data: "number"},
+                              {data: "Carname"},
+                              {data: "Customer"},
+                              {data: "Id"},
+                              {data: "Status" },
+                              {
+                                data: null,
+                                className: "center",
+                                defaultContent: '<a href="/Log" class="editor_edit">Edit</a>'
+                            }
+                              
+                                
+                        ],         
                     });
-                });
+            $.ajax({
+            url: '/work',
+            method: 'get',
+            dataType: 'json',
+            success:function(data) {
+                  table.clear().draw();
+                  table.rows.add(data).draw();
+              }
+            });
+            });
+            $(document).ready(function() {
+               
+               loadTable();
+                // Edit record
+               $('#workTable').on('click', 'a.editor_edit', function (e) {
+                   e.preventDefault();
+                   if($(this).context.innerHTML=="Edit")
+                   {
+                       $(this).context.innerText ="Save";
+                       var $row = $(this).closest("tr");
+                       var $tdElement = $row.find("td")[1];
+                       var txt = $tdElement.innerHTML;
+                       $tdElement.innerHTML = "<input style='width:100%;background-color: rgba(255, 255, 128, .5);' type='text' value='" + txt + "'>";
+                   }
+                   else{
+                       $(this).context.innerText ="Edit";
+                       var $row = $(this).closest("tr");
+                       var $tdElement = $row.find("td")[1];
+                       var number = $row.find("td")[0].innerHTML;
+                       var status = $row.find("td").find("input").first().val();
+                       var json = {
+                           'number': number,
+                           'Status': status
+                       }
+                      
+                   }
+              } );
+            } );
             </script>
         </body>
         </html>   

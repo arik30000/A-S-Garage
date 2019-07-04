@@ -119,6 +119,34 @@ app.post('/register', function(req,res){
   ////////////////// finish add table row to tabledb in mongodb/////////////////////////////////////////
 
   ////////////////// edit table row to tabledb in mongodb/////////////////////////////////////////
+  app.put('/work/', function(req,res){ 
+    var numbercar = req.body.number; 
+    var carname =req.body.carname; 
+    var customer = req.body.name;
+    var id = req.body.id;
+    var status = req.body.status; 
+    var data = { 
+       "number" : numbercar, 
+       "Carname" :carname, 
+       "Customer" : customer,
+       "Id" : id,
+       "Status" : status 
+    }
+    db.collection('tabledb').findOne({ number:req.body.number}, function(err, user) 
+    {
+      if(user ===null){
+        db.collection('tabledb').insertOne(data,function(err, collection){ 
+          if (err) throw err; 
+          console.log("Record deleted Successfully");
+          res.redirect("addtreatment"); 
+        });
+      }else if (user.number === req.body.number && user.Carname === req.body.carname && user.Customer === req.body.name && user.Id === req.body.id&& user.Status ===req.body.status)
+        {
+          res.end("already exists");
+             
+        } 
+      });
+      });
 
 ////////////////////*****delete table******////////////////// */
 app.post('/deletetreatment', function(req,res){ 
@@ -155,17 +183,14 @@ app.post('/deletetreatment', function(req,res){
    
 
 
-      app.get('/Tr', (req, res) => {
-        db.collection('tabledb').find((err,data ) => {
+      app.get('/work', (req, res) => {
+        db.collection('tabledb').find({}).toArray( (err,data ) => {
             if (!err) {
-                res.render("/index", {
-                    index: data
-                });
-            }
-            else {
+                  return res.json(data)
+            }else {
                 console.log('Error in retrieving employee list :' + err);
             }
-        });
+        } );
     });
 
 //////////////*************datatables done***************** */
