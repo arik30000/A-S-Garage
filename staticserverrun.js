@@ -33,10 +33,10 @@ app.post('/log-in',function(req,res){
         else
         {
    ///////// finish checking special account admin////////////////       
-  db.collection('devices').findOne({ name: req.body.usrname}, function(err, user) {
+  db.collection('devices').findOne({ name: req.body.usrname,password:req.body.psw}, function(err, user) {
             if(user ===null){
               res.end("Login invalid");
-           }else if (user.name === req.body.usrname && user.password === req.body.psw){
+           } else if ((user.name === req.body.usrname) && (user.password === req.body.psw) ){
             res.redirect("addtreatment");  
          } else {
            console.log("Credentials wrong");
@@ -153,6 +153,7 @@ app.post('/deletetreatment', function(req,res){
   {
     if(user ===null ){
       res.end("This Treatment does not exist");
+      
      
     }else 
       {
