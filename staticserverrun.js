@@ -149,17 +149,16 @@ app.post('/deletetreatment', function(req,res){
      "Id" : id,
      "Status" : status 
   }
-  db.collection('tabledb').findOne({ number:req.body.number}, function(err, user) 
+  db.collection('tabledb').findOneAndDelete({ number:req.body.number}, function(err, user) 
   {
-    if(user ===null){
+    if(user ===null ){
       res.end("This Treatment does not exist");
-    }else if (user.number === req.body.number && user.Carname === req.body.carname && user.Customer === req.body.name && user.Id === req.body.id&& user.Status ===req.body.status)
+     
+    }else 
       {
-        db.collection('tabledb').remove(data,function(err, collection){ 
-          if (err) throw err; 
           console.log("Record deleted Successfully");
           res.redirect("deletetreatment"); 
-        })};  
+      };  
       }); 
       });
  ///////////////////////finish delete table row/////////////////////
