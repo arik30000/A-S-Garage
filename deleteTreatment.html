@@ -16,25 +16,24 @@
     <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
 </head>
 <body>
-
-        <div class="container">
-                <nav class="navbar navbar-togglseable-md navbar-light bg-faded fixed-top " style="background-color: rgb(253, 252, 251)" id="page_nav">
-                        <a href="/addtreatment" class="navbar-brand  mx-auto" >
-                            <div class="vipTarderFxLogo"  ><span>Add-Treatment</span>
-                            </a>
-                                <a href="/edittreatment" class="navbar-brand  mx-auto" >
-                                    <div class="vipTarderFxLogo"  ><span>Edit-Treatment</span>
-                            </div>
-                        </div>
-                        </a>
+        <nav class="navbar navbar-togglseable-md navbar-light bg-faded fixed-top " style="background-color: rgb(253, 252, 251)" id="page_nav">
+                <a href="/addtreatment" class="navbar-brand  mx-auto" >
+                    <div class="vipTarderFxLogo"  ><span>Add-Treatment</span>
                     </a>
-                    <a href="/" class="navbar-brand  mx-auto" >
-                        <div class="vipTarderFxLogo"  ><span>Logout</span> 
-                        </div>
-                    </a>   
-                    </nav>
+                        <a href="/edittreatment" class="navbar-brand  mx-auto" >
+                            <div class="vipTarderFxLogo"  ><span>Edit-Treatment</span>
+                    </div>
+                </div>
+                </a>
+            </a>
+            <a href="/" class="navbar-brand  mx-auto" >
+                <div class="vipTarderFxLogo"  ><span>Logout</span> 
+                </div>
+            </a>   
+            </nav>
+        <div class="container">
                     <br><br><br>
-                <div class="container1" class="col-sm-6">
+                <div class="container1" class="col-sm-12 col-md-12">
                         
                         <form id="table"  method="post" onsubmit="return true" >
                                 
@@ -56,9 +55,9 @@
                     </div>
         
         
-            <div class="container2" class="col-sm-6" style="margin-top: -34.9%">
+            <div class="container2"  style="margin-top: -34.9%">
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-1">
+                    <div class="col-md-12 col-sm-12 col-md-offset-1">
                                                         <h3> Garage-Treatments</h3>
 
                         <table id="datatable" class="table table-bordered table-hover">
@@ -78,6 +77,7 @@
             </div>
         
         </div>
+    </div>
         <script
                     src="http://code.jquery.com/jquery-3.2.1.min.js"
                     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -104,9 +104,7 @@
                               {data: "Carname"},
                               {data: "Customer"},
                               {data: "Id"},
-                              {data: "Status" },
-                              
-                              
+                              {data: "Status" },     
                                 
                         ],         
                     });
@@ -120,34 +118,6 @@
               }
             });
             });
-            $(document).ready(function() {
-               
-               loadTable();
-                // Edit record
-               $('#workTable').on('click', 'a.editor_edit', function (e) {
-                   e.preventDefault();
-                   if($(this).context.innerHTML=="Edit")
-                   {
-                       $(this).context.innerText ="Save";
-                       var $row = $(this).closest("tr");
-                       var $tdElement = $row.find("td")[1];
-                       var txt = $tdElement.innerHTML;
-                       $tdElement.innerHTML = "<input style='width:100%;background-color: rgba(255, 255, 128, .5);' type='text' value='" + txt + "'>";
-                   }
-                   else{
-                       $(this).context.innerText ="Edit";
-                       var $row = $(this).closest("tr");
-                       var $tdElement = $row.find("td")[1];
-                       var number = $row.find("td")[0].innerHTML;
-                       var status = $row.find("td").find("input").first().val();
-                       var json = {
-                           'number': number,
-                           'Status': status
-                       }
-                      
-                   }
-              } );
-            } );
             </script>
         </body>
         </html>   

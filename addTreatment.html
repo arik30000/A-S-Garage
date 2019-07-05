@@ -16,30 +16,24 @@
     <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
 </head>
 <body>
-
-        <div class="container">
-                <nav class="navbar navbar-togglseable-md navbar-light bg-faded fixed-top " style="background-color: rgb(253, 252, 251)" id="page_nav">
-                        <a href="/edittreatment" class="navbar-brand  mx-auto" >
-                            <div class="vipTarderFxLogo"  ><span>Edit-Treatment</span>
-                                
-                            </a>
-                                <a href="/deletetreatment" class="navbar-brand  mx-auto" >
-                                    <div class="vipTarderFxLogo"  ><span>Delete-Treatment</span> 
-                                        
-                                        
-                                        
-                                        
-                            </div>
-                        </div>
-                        </a>
+        <nav class="navbar navbar-togglseable-md navbar-light bg-faded fixed-top " style="background-color: rgb(253, 252, 251)" id="page_nav">
+                <a href="/edittreatment" class="navbar-brand  mx-auto" >
+                    <div class="vipTarderFxLogo"  ><span>Edit-Treatment</span>    
                     </a>
-                    <a href="/" class="navbar-brand  mx-auto" >
-                        <div class="vipTarderFxLogo"  ><span>Logout</span> 
-                        </div>
-                    </a>    
-                    </nav>
+                        <a href="/deletetreatment" class="navbar-brand  mx-auto" >
+                            <div class="vipTarderFxLogo"  ><span>Delete-Treatment</span>            
+                    </div>
+                </a>
+            </div>
+            <a href="/" class="navbar-brand  mx-auto" >
+                <div class="vipTarderFxLogo"  ><span>Logout</span> 
+                </div>
+            </a>    
+            </nav>
+        <div class="container">
+                
                     <br><br><br>
-                <div class="container1" class="col-sm-6">
+                <div class="container1" class="col-sm-12 col-md-12">
                         <form id="table"  method="post" onsubmit="return true" >
         
                             <div class="header">
@@ -81,10 +75,11 @@
                         </form>
                     </div>
         
-        
-            <div class="container2" class="col-sm-6" style="margin-top: -34.9%">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-1">
+                    <div class="row">
+                            <div class="col-md-12 col-sm-12 col-md-offset-1">
+            <div class="container2"  style="margin-top: -34.9%">
+               
+                   
                                                         <h3> Garage-Treatments</h3>
 
                         <table id="datatable" class="table table-bordered table-hover">
@@ -101,8 +96,9 @@
                               
                 </div>
             </div>
-        
         </div>
+        </div>
+    
         <script
                     src="http://code.jquery.com/jquery-3.2.1.min.js"
                     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
