@@ -10,7 +10,7 @@ body {
     position: relative;
 	width:100%;
     height: 80%;
-    top:2%;
+    top:20%;
     left:55%;
     border-radius: 4%;  /*shaped edges*/
 	background-color: #f2f2f2;
@@ -21,7 +21,7 @@ body {
  .container2{
 	position: relative;
 	left:50%;
-	top:-2%;
+	top:17%;
     width:80%;
     height: 80%; 
     border-radius: 4%; /*shaped edges*/
