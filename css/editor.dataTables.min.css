@@ -17,9 +17,9 @@ div.DTE{position:relative}div.DTE div.DTE_Header{position:absolute;top:0;left:0;
 		.container1 {
 			position: relative;
 			width:50%;
-			height: 80%;
+			height: 60%;
 			bottom:50%;
-			right:25%;
+			right:10%;
 			border-radius: 4%;  /*shaped edges*/
 			background-color: #f2f2f2;
 			padding: 1%;
@@ -29,8 +29,8 @@ div.DTE{position:relative}div.DTE div.DTE_Header{position:absolute;top:0;left:0;
 		.container2 {
 		
 			position:relative;
-			width:70%;
-			height:80%;
+			width:50%;
+			height:60%;
 			top:100%;
 			left: 5%;
 			border-radius: 1.5%;  /*shaped edges*/
