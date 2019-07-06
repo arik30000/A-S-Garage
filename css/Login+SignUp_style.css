@@ -111,7 +111,9 @@ background-color: green;
     border-radius: 4%;  /*shaped edges*/
 	background-color: #f2f2f2;
 	padding: 1%;
-	margin: 10.5%;
+  margin: 10.5%;
+  clear: auto;
+  overflow: auto;
     }
 
 /* The message box is shown when the user clicks on the password field */
