@@ -2,7 +2,7 @@
     function nameval() {
         var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
         var name = document.getElementById('fname').value;
-        var emailform = document.getElementsByName('Email')[0];
+        var emailform = document.getElementsByName('email')[0];
         var nameform = document.getElementsByName('Name')[0];
         var Check=0;
         if(!regName.test(name)){

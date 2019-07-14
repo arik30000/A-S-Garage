@@ -185,31 +185,31 @@ app.post('/deletetreatment', function(req,res){
         //////////////////////finish loading static files//////////////////////////
         ////////////////get and post requests for web pages//////////////////////////
         app.get("/edittreatment", function(req, res) {
-            res.sendFile(path.join(__dirname + "/editTreatment.html"));
+            res.sendFile(path.join(__dirname +"html"+ "/editTreatment.html"));
         });
         app.get("/addtreatment", function(req, res) {
-          res.sendFile(path.join(__dirname + "/addTreatment.html"));
+          res.sendFile(path.join(__dirname +"html"+ "/addTreatment.html"));
       });
       app.get("/deletetreatment", function(req, res) {
-        res.sendFile(path.join(__dirname + "/deleteTreatment.html"));
+        res.sendFile(path.join(__dirname +"html"+ "/deleteTreatment.html"));
     });
     app.get("/log-in", function(req, res) {
-      res.sendFile(path.join(__dirname + "/Login.html"));
+      res.sendFile(path.join(__dirname +"html"+ "/Login.html"));
   });
     app.get("/",function(req, res) {
-      res.sendFile(path.join(__dirname + "/Login.html"));
+      res.sendFile(path.join(__dirname +"html"+ "/Login.html"));
     });
     app.post("/",function(req, res) {
-      res.sendFile(path.join(__dirname + "/addTreatment.html"));
+      res.sendFile(path.join(__dirname +"html"+ "/addTreatment.html"));
     });   
         app.get("/register", function(req, res) {
-          res.sendFile(path.join(__dirname + "/Register.html"));
+          res.sendFile(path.join(__dirname +"html"+ "/Register.html"));
       });
         app.get("/contact-us", function(req, res) {
-          res.sendFile(path.join(__dirname + "/ContactForm.html"));      
+          res.sendFile(path.join(__dirname +"html"+ "/ContactForm.html"));      
       });
     app.get("/rec-pass", function(req, res) {
-      res.sendFile(path.join(__dirname + "/Rec-Pass.html"));  
+      res.sendFile(path.join(__dirname +"html"+ "/Rec-Pass.html"));  
   });
   app.get('/favicon.ico',function(req,res){
     res.end();
