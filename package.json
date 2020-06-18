@@ -5,7 +5,7 @@
   "main": "staticserverrun.js",
   "dependencies": {
     "alert-node": "^1.2.5",
-    "angular": "^1.7.8",
+    "angular": "^1.8.0",
     "body-parser": "^1.19.0",
     "ejs": "^2.6.1",
     "express": "^4.17.0",
