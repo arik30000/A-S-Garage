@@ -16,7 +16,7 @@
     "mongo-datatable": "^1.1.1",
     "mongod": "^2.0.0",
     "mongoose": "^5.6.2",
-    "nodemailer": "^6.2.1",
+    "nodemailer": "^6.4.16",
     "parser": "^0.1.4",
     "pug": "^2.0.4",
     "upper-case": "^1.1.3"
